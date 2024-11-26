@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hello World App</title>
+  <style>
+    #hello-world {
+      font-size: 24px;
+      margin: 20px;
+    }
+    #quote {
+      font-size: 18px;
+      font-style: italic;
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div id="hello-world">Hello World</div>
+  <div id="quote">Here is the Quote</div>
+  <script>
+    async function fetchData() {
+      const response = await fetch('http://localhost:3000/data');
+      const data = await response.json();
+      document.getElementById('hello-world').innerText = data.helloWorld;
+      document.getElementById('hello-world').style.color = data.color;
+      document.getElementById('quote').innerText = data.quote;
+      document.getElementById('hello-world').style.fontFamily = data.font;
+    }
+    fetchData();
+  </script>
+</body>
+</html>
